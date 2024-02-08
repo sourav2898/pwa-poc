@@ -1,89 +1,126 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/10.8.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/10.8.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/10.8.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/10.8.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/10.8.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/10.8.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/10.8.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/10.8.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/10.8.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/10.8.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>PWA POC</title>
+    <!-- materialize icons, css & js -->
+    <link type="text/css" href="/css/materialize.min.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link type="text/css" href="/css/styles.css" rel="stylesheet" />
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <link rel="manifest" href="/manifest.json" />
+    <!-- ios support -->
+    <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4" />
+    <meta name="theme-color" content="#FFE1C4" />
   </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+  <body class="grey lighten-4">
+    <!-- top nav -->
+    <nav class="z-depth-0">
+      <div class="nav-wrapper container">
+        <a href="/">PWA<span>POC</span></a>
+        <!-- <span class="right grey-text text-darken-1">
+        <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+      </span> -->
+      </div>
+    </nav>
+
+    <!-- side nav -->
+    <ul id="side-menu" class="sidenav side-menu">
+      <li><a class="subheader">PWA POC</a></li>
+      <!-- <li><a href="/" class="waves-effect">Home</a></li> -->
+      <!-- <li><a href="/pages/about.html" class="waves-effect">About</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="/pages/contact.html" class="waves-effect">
+      <i class="material-icons">mail_outline</i>Contact</a>
+    </li> -->
+    </ul>
+
+    <!-- add recipe side nav -->
+      <form class="add-recipe container section">
+        <h6>Add the details from here</h6>
+        <div class="divider"></div>
+        <div class="input-field">
+          <input
+            placeholder="Enter the name of the candidate here"
+            id="name"
+            type="text"
+            class="validate"
+          />
+          <label for="ingredients">Name</label>
+        </div>
+        <div class="input-field">
+          <input
+            placeholder="Enter the email of the candidate here"
+            id="email"
+            type="email"
+            class="validate"
+          />
+          <label for="title">Email</label>
+        </div>
+        <div class="input-field">
+          <input
+            placeholder="Enter the age of the candidate here"
+            id="age"
+            type="number"
+            class="validate"
+          />
+          <label for="ingredients">Age</label>
+        </div>
+        <div class="input-field">
+          <input
+            placeholder="Enter the number of the candidate here"
+            id="contact"
+            type="number"
+            class="validate"
+          />
+          <label for="ingredients">Contact</label>
+        </div>
+        <div class="input-field center">
+          <button class="btn-small">Add</button>
+        </div>
+      </form>
+
+    <!-- recipes -->
+    <div class="recipes container grey-text text-darken-1">
+      <h6>Your added details will be displayed here :</h6>
+
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
 
+    <!-- <div class="center">
+      <a
+        class="btn-floating btn-small btn-large add-btn sidenav-trigger"
+        data-target="side-form"
+      >
+        <i class="material-icons">add</i>
+      </a>
+    </div> -->
+
+    
+
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-firestore.js"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
+      // Initialize Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyAxlTN7XKXrB0JNQqSCDR84M6fjwyUGPpE",
+        authDomain: "pwa-poc-316ec.firebaseapp.com",
+        databaseURL: "https://pwa-poc-316ec-default-rtdb.firebaseio.com",
+        projectId: "pwa-poc-316ec",
+        storageBucket: "pwa-poc-316ec.appspot.com",
+        messagingSenderId: "350186640745",
+        appId: "1:350186640745:web:ed952258758aa2221919f8",
+      };
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
     </script>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/db.js"></script>
+    <script src="/js/ui.js"></script>
   </body>
 </html>
