@@ -11,30 +11,49 @@ db.enablePersistence()
   });
 
 // real-time listener
-db.collection('recipes').onSnapshot(snapshot => {
+db.collection('tasks').onSnapshot(snapshot => {
   snapshot.docChanges().forEach(change => {
+    console.log(change.doc.data(), change.doc.id)
     if(change.type === 'added'){
       renderRecipe(change.doc.data(), change.doc.id);
     }
     if(change.type === 'removed'){
       // remove the document data from the web page
+      removeRecipe(change.doc.id);
     }
   });
 });
 
 // add new recipe
 const form = document.querySelector('form');
-form.addEventListener('submit', evt => {
-  evt.preventDefault();
+form.addEventListener('submit', event => {
+  event.preventDefault();
   
   const recipe = {
-    name: form.title.value,
-    ingredients: form.ingredients.value
+    name: form.name.value,
+    email: form.email.value,
+    age: form.age.value,
+    contact: form.contact.value
   };
-
-  db.collection('recipes').add(recipe)
+  if(recipe.name && recipe.email && recipe.contact && recipe.age){
+    db.collection('tasks').add(recipe)
     .catch(err => console.log(err));
+  } else {
+    alert('Please fill all the details in the form.')
+  }
 
-  form.title.value = '';
-  form.ingredients.value = '';
+  form.name.value = '';
+  form.email.value = '';
+  form.age.value = null;
+  form.contact.value = null;
 });
+
+// remove a recipe
+const detailsContainer = document.querySelector('.recipes');
+detailsContainer.addEventListener('click', evt => {
+  if(evt.target.tagName === 'I'){
+    const id = evt.target.getAttribute('data-id');
+    //console.log(id);
+    db.collection('tasks').doc(id).delete();
+  }
+})

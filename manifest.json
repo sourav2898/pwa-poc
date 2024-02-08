@@ -1,6 +1,6 @@
 {
-  "name": "Food Ninja",
-  "short_name": "FoodNinja",
+  "name": "PWA POC",
+  "short_name": "PWAPOC",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#FFE9D2",

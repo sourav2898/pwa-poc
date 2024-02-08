@@ -14,10 +14,11 @@ const renderRecipe = (data, id) => {
 
   const html = `
     <div class="card-panel recipe white row" data-id="${id}">
-      <img src="/img/dish.png" alt="recipe thumb">
       <div class="recipe-details">
-        <div class="recipe-title">${data.name}</div>
-        <div class="recipe-ingredients">${data.ingredients}</div>
+        <div class="recipe-title">Name: ${data.name}</div>
+        <div class="recipe-ingredients">Email: ${data.email}</div>
+        <div class="recipe-ingredients">Age: ${data.age}</div>
+        <div class="recipe-ingredients">Contact: ${data.contact}</div>
       </div>
       <div class="recipe-delete">
         <i class="material-icons" data-id="${id}">delete_outline</i>
@@ -26,4 +27,10 @@ const renderRecipe = (data, id) => {
   `;
   recipes.innerHTML += html;
 
+};
+
+// remove recipe
+const removeRecipe = (id) => {
+  const recipe = document.querySelector(`.recipe[data-id=${id}]`);
+  recipe.remove();
 };

@@ -1,8 +1,8 @@
 /* colours */
 :root{
-  --primary: #FFE9D2;
-  --secondary: #FFE1C4;
-  --title: #FF8816;
+  --primary: #101820FF;
+  --secondary: #FEE705FF;
+  --title: crimson;
 }
 
 /* layout styles */
@@ -29,24 +29,17 @@ nav .sidenav-trigger{
   border-radius: 8px;
   padding: 10px;
   box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
-  display: grid;
-  grid-template-columns: 2fr 6fr 1fr;
-  grid-template-areas: "image details delete";
-  position: relative;
-}
-.recipe img{
-  grid-area: image;
-  max-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .recipe-details{
-  grid-area: details;
-  margin-top: 6px;
+  flex: 1
 }
 .recipe-delete{
-  grid-area: delete;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 .recipe-delete i{
   font-size: 18px;
